@@ -1,3 +1,4 @@
+from pyexpat.errors import messages
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.urls import reverse_lazy
@@ -11,6 +12,7 @@ class RegistrarseView(FormView):
     success_url = reverse_lazy('index')
 
     def form_valid(self, form) -> HttpResponse:
+        
         form.save()
         return super().form_valid(form)
     

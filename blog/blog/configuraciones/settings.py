@@ -24,6 +24,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+AUTH_USER_MODEL = 'blog_auth.Usuario'
+
 
 # Application definition
 
@@ -36,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     
     'apps.post',
+    'apps.blog_auth',
+    'apps.comentarios',
 ]
 
 MIDDLEWARE = [

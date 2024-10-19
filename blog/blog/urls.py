@@ -25,4 +25,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('users/', include('apps.blog_auth.urls')),
     path('articulos/', include('apps.post.urls')),
+    path('comentarios/', include('apps.comentarios.urls')),
 ]

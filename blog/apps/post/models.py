@@ -28,3 +28,6 @@ class Articulo(models.Model):
     def delete(self, using = None, keep_parents = False):
         self.imagen.delete(self.imagen.name)
         super().delete()
+
+    def setTitulo(self, titulo):
+        self.titulo = titulo

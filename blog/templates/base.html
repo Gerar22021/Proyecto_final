@@ -4,19 +4,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <center>
     {% block titulo %}
     {% endblock %}
+    </center>
     <link rel="stylesheet" href="{% static 'css/estilos.css'%}">
 </head>
 <body>
     <div>
-        {% block navegacion %}
-        {% endblock %}
+        <center>
+            {% block navegacion %}
+            {% endblock %}
+        </center>
     </div>
-        {% block contenido %}
-        {% endblock %}
+            {% block contenido %}
+            {% endblock %}
     <div>
+        
 
     </div>
 </body>
+<footer>
+
+</footer>
 </html>

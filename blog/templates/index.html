@@ -1,11 +1,13 @@
 {% extends 'base.html'%}
 {% load static %}
+
 {% block titulo %}
-<title>Inicio</title>
+    <title>Mi blog</title>
 {% endblock %}
+
 {% block navegacion %}
-    {% if user.is_authenticated %}
-        
+<h1>Mi blog</h1>
+    {% if user.is_authenticated %}        
         
     {% else %}
     <form method="post" action="{% url 'apps.blog_auth:sesion' %}">
@@ -44,5 +46,8 @@
     {% endif %}
 {% endblock %}
 {% block contenido %}
-<h1></h1>
+<form action="{% url 'apps.post:listar_articulos' %}" class="d-flex" role="search" method="get">
+    <input class="form-control me-2" type="search" placeholder="Buscar articulo" aria-label="Search" name="buscador">
+    <button class="btn-primary" type="submit">Buscar</button>
+</form>
 {% endblock %}
