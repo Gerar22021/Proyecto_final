@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block contenido %}
+<h1>Categorias</h1>
+<div class="dropdown">
+    Filtrar por categoria:
+    <button>categoria</button>
+    <div class="dropdown-content">
+        {% for p in categorias %}
+            <a href="{% url 'apps.post:listar_por_categoria' p.nombre%}">{{p.nombre}}</a>
+        {%empty%}
+        No hay categorias
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

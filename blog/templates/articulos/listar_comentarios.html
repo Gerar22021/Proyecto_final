@@ -1,0 +1,20 @@
+{% block contenido %}
+{% for p in comentarios %}
+    <br>
+        <li>{{p.texto}}</li>
+        {% if perms.post.add_articulo %}
+            <form method="post" action="{% url 'apps.comentarios:editar_comentario' p.pk%}">
+                {% csrf_token %}
+                <button type="submit" class="dropdown-item">Editar</button>
+            </form>
+            <form method="post" action="{% url 'apps.comentarios:eliminar_comentario' p.pk%}">
+                {% csrf_token %}
+                <button type="submit" class="dropdown-item">Eliminar</button>
+            </form>
+            
+        {% endif %}
+    <br>
+    {%empty%}
+    <h1>No hay comentarios</h1>
+    {% endfor %}
+{% endblock %}

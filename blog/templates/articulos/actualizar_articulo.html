@@ -1,15 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block titulo %}
-<center>
-    <h1>Modificar Articulo</h1>
-</center>
-{% endblock %}
-
 {% block contenido %}
-
-    
+    <h1>Modificar Articulo</h1>
     <form action="" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <p>Ingrese los datos y presione el boton de guardar</p>

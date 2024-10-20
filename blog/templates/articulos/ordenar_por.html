@@ -1,14 +1,15 @@
 {% extends 'base.html' %}
 {% load static %}
 
-
-
-{% block contenido %}
+{% block navegacion %}
 <a href="{% url 'apps.post:listar_categorias' %}">Filtrar por categoria</a>
 <form method="GET" action="{% url 'apps.post:ordenar_por' %}">
     <button class="btn-primary" name="orden" type="submit" value="fecha">Ordenar por fecha</button>
     <button class="btn-primary" name="orden" type="submit" value="titulo">Ordenar por título</button>
 </form>
+{% endblock %}
+
+{% block contenido %}
 <h1>Articulos</h1>
 <div class="container-fluid">
     {% for p in articulos %}
@@ -17,17 +18,14 @@
         <li>{{p.subtitulo}}</li>
         <li>{{p.fecha}}</li>
         <li>{{p.categoria}}</li>
-        <a href="{% url 'apps.post:articulo_individual' p.pk%}">Leer más</a>
-        {% if perms.post.add_articulo %}
-            <form method="post" action="{% url 'apps.post:actualizar_articulo' p.pk%}">
-                {% csrf_token %}
-                <button type="submit" class="dropdown-item">Editar</button>
-            </form>
-            <form method="post" action="{% url 'apps.post:eliminar_articulo' p.pk%}">
-                {% csrf_token %}
-                <button type="submit" class="dropdown-item">Eliminar</button>
-            </form>
-        {% endif %}
+        <form method="post" action="{% url 'apps.post:actualizar_articulo' p.pk%}">
+            {% csrf_token %}
+            <button type="submit" class="dropdown-item">Actualizar</button>
+        </form>
+        <form method="post" action="{% url 'apps.post:eliminar_articulo' p.pk%}">
+            {% csrf_token %}
+            <button type="submit" class="dropdown-item">Eliminar</button>
+        </form>
     <br>
     {%empty%}
     <h1>No hay registros</h1>

@@ -1,0 +1,34 @@
+{% extends 'base.html'%}
+{% load static %}
+
+{% block contenido %}
+<h1>Articulo</h1>
+<div class="container-fluid">
+    <br>
+        <li>{{articulo.titulo}}</li>
+        <li>{{articulo.subtitulo}}</li>
+        <li>{{articulo.fecha}}</li>
+        <li>{{articulo.categoria}}</li>
+            <form method="post" action="{% url 'apps.post:actualizar_articulo' articulo.pk%}">
+                {% csrf_token %}
+                <button type="submit" class="dropdown-item">Editar</button>
+            </form>
+            <form method="post" action="{% url 'apps.post:eliminar_articulo' articulo.pk%}">
+                {% csrf_token %}
+                <button type="submit" class="dropdown-item">Eliminar</button>
+            </form>
+    <br>
+</div>
+<div class="container-fluid">
+    <h3>Comentarios ({{ comentarios.count }})</h3>
+    <div class="container-fluid">
+        
+            {% include 'articulos/listar_comentarios.html' %}
+        
+    </div>
+</div>
+<div class="container-fluid">
+    <h4>Añadir tu comentario:</h4>
+    {% include 'articulos/agregar_comentario.html' %}
+</div>
+{% endblock %}
