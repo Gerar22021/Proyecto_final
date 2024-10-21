@@ -6,7 +6,7 @@ from apps.blog_auth.models import Usuario
 class Comentario(models.Model):
     usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
     articulo = models.ForeignKey(Articulo, on_delete=models.CASCADE, default=1)
-    texto = models.TextField(verbose_name='Comentario')
+    texto = models.TextField(verbose_name='Comentario', )
     fecha = models.DateTimeField(auto_now_add=True)
 
     class Meta:

@@ -2,13 +2,26 @@
 {% load static %}
 
 {% block contenido %}
-<h1>Articulo</h1>
-<div class="container-fluid">
+<div class="card" style="width: 18rem;">
     <br>
-        <li>{{articulo.titulo}}</li>
-        <li>{{articulo.subtitulo}}</li>
-        <li>{{articulo.fecha}}</li>
-        <li>{{articulo.categoria}}</li>
+        {% if articulo.imagen %}
+        <img src="{{articulo.imagen.url}}" class="card-img-top" alt="...">
+        {% else %}
+        <img src="{% static 'post_default.png' %}" class="card-img-top" alt="...">
+        {% endif %}
+        <div class="card-body">
+            <h5 class="card-title">{{articulo.titulo}}</h5>
+            <p class="card-text">{{articulo.subtitulo}}</p>
+            <p class="card-text">{{articulo.texto}}</p>
+            <p class="card-text">{{articulo.fecha}}</p>
+            <p class="card-text">{{articulo.categoria}}</p>
+            {% if user.perfil.miembro and p.usuario.id == user.id %}
+            <a href="{% url 'apps.post:actualizar_articulo' articulo.pk%}" class="btn btn-primary">Editar</a>
+            <a href="{% url 'apps.post:eliminar_articulo' articulo.pk%}" class="btn btn-primary">Eliminar</a>
+            {% endif %}
+        </div>
+          
+            <a href="{% url 'apps.post:actualizar_articulo' articulo.pk%}" class="btn btn-primary">Editar</a>  
             <form method="post" action="{% url 'apps.post:actualizar_articulo' articulo.pk%}">
                 {% csrf_token %}
                 <button type="submit" class="dropdown-item">Editar</button>
@@ -17,6 +30,7 @@
                 {% csrf_token %}
                 <button type="submit" class="dropdown-item">Eliminar</button>
             </form>
+        
     <br>
 </div>
 <div class="container-fluid">
@@ -28,7 +42,9 @@
     </div>
 </div>
 <div class="container-fluid">
-    <h4>Añadir tu comentario:</h4>
+    {% if user.perfil.miembro %}
+        <h4>Añadir tu comentario:</h4>
     {% include 'articulos/agregar_comentario.html' %}
+    {% endif %}
 </div>
 {% endblock %}

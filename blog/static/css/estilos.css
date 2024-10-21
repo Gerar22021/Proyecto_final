@@ -22,3 +22,16 @@
     color: #FFFFFF;
     background-color: #00A4BD;
   }
+
+  .card-container{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 100px;
+  }
+
+  .card{
+    width: 325;
+    overflow: hidden;
+    margin: 20px;
+  }

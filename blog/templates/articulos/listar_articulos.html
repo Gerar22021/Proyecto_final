@@ -9,28 +9,21 @@
     <button class="btn-primary" name="orden" type="submit" value="fecha">Ordenar por fecha</button>
     <button class="btn-primary" name="orden" type="submit" value="titulo">Ordenar por título</button>
 </form>
-<h1>Articulos</h1>
-<div class="container-fluid">
+<div class="card-container">
     {% for p in articulos %}
-    <br>
-        <li>{{p.titulo}}</li>
-        <li>{{p.subtitulo}}</li>
-        <li>{{p.fecha}}</li>
-        <li>{{p.categoria}}</li>
-        <a href="{% url 'apps.post:articulo_individual' p.pk%}">Leer más</a>
-        {% if perms.post.add_articulo %}
-            <form method="post" action="{% url 'apps.post:actualizar_articulo' p.pk%}">
-                {% csrf_token %}
-                <button type="submit" class="dropdown-item">Editar</button>
-            </form>
-            <form method="post" action="{% url 'apps.post:eliminar_articulo' p.pk%}">
-                {% csrf_token %}
-                <button type="submit" class="dropdown-item">Eliminar</button>
-            </form>
-        {% endif %}
-    <br>
+    <div class="card" style="width: 18rem;">
+            <img src="{% static 'post_default.png' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{p.titulo}}</h5>
+                <p class="card-text">{{p.texto|truncatechars:100}}</p>
+                <p class="card-text">{{p.fecha}}</p>
+                <p class="card-text">{{p.categoria}}</p>
+                <a href="{% url 'apps.post:articulo_individual' p.pk%}" class="btn btn-primary">Ver mas</a>
+            </div>  
+    </div>
     {%empty%}
-    <h1>No hay registros</h1>
+         <h1>No hay registros</h1>
     {% endfor %}
 </div>
+
 {% endblock %}

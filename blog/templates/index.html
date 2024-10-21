@@ -6,8 +6,30 @@
 {% endblock %}
 
 {% block contenido %}
-<form action="{% url 'apps.post:listar_articulos' %}" class="d-flex" role="search" method="get">
-    <input class="form-control me-2" type="search" placeholder="Buscar articulo" aria-label="Search" name="buscador">
-    <button class="btn-primary" type="submit">Buscar</button>
-</form>
+<div class="card-container">
+    <div class="card" style="width: 18rem;">
+        <img src="{% static 'post_default.png' %}" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
+    <div class="card" style="width: 18rem;">
+        <img src="{% static 'post_default.png' %}" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
+    <div class="card" style="width: 18rem;">
+        <img src="{% static 'post_default.png' %}" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
+</div>
 {% endblock %}

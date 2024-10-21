@@ -43,7 +43,7 @@ def listar_comentarios(request):
 
 class EditarComentario(LoginRequiredMixin, UpdateView):
     model = Comentario
-    fields = ['texto',]
+    fields = ['texto']
     template_name = 'articulos/agregar_comentario.html'
     success_url = reverse_lazy('apps.post:listar_articulos')
 
