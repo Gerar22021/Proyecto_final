@@ -1,13 +1,18 @@
 {% extends 'base.html' %}
-{% load static %}
+{% load static %}<!--  -->
 
 
 
 {% block contenido %}
-<a href="{% url 'apps.post:listar_categorias' %}">Filtrar por categoria</a>
+Filtrar por categoria: 
+    {% for p in articulos %}
+        <a href="{% url 'apps.post:listar_por_categoria' p.categoria.nombre%}" class="btn btn-primary">{{p.categoria.nombre}}</a>
+    {% endfor %}
+    <a href="{% url 'apps.post:listar_articulos'%}" class="btn-primary">Eliminar filtro</a>
+
 <form method="GET" action="{% url 'apps.post:ordenar_por' %}">
-    <button class="btn-primary" name="orden" type="submit" value="fecha">Ordenar por fecha</button>
-    <button class="btn-primary" name="orden" type="submit" value="titulo">Ordenar por título</button>
+    <button class="btn btn-primary" name="orden" type="submit" value="fecha">Ordenar por fecha</button>
+    <button class="btn btn-primary" name="orden" type="submit" value="titulo">Ordenar por título</button>
 </form>
 <div class="card-container">
     {% for p in articulos %}

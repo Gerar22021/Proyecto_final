@@ -30,6 +30,12 @@
     margin-top: 100px;
   }
 
+  .card-container-comentario{
+    display: flex;
+    justify-content: left;
+    flex-wrap: wrap;
+  }
+
   .card{
     width: 325;
     overflow: hidden;

@@ -2,37 +2,29 @@
 {% load static %}
 
 {% block contenido %}
-<div class="card" style="width: 18rem;">
-    <br>
-        {% if articulo.imagen %}
-        <img src="{{articulo.imagen.url}}" class="card-img-top" alt="...">
-        {% else %}
-        <img src="{% static 'post_default.png' %}" class="card-img-top" alt="...">
-        {% endif %}
-        <div class="card-body">
-            <h5 class="card-title">{{articulo.titulo}}</h5>
-            <p class="card-text">{{articulo.subtitulo}}</p>
-            <p class="card-text">{{articulo.texto}}</p>
-            <p class="card-text">{{articulo.fecha}}</p>
-            <p class="card-text">{{articulo.categoria}}</p>
-            {% if user.perfil.miembro and p.usuario.id == user.id %}
-            <a href="{% url 'apps.post:actualizar_articulo' articulo.pk%}" class="btn btn-primary">Editar</a>
-            <a href="{% url 'apps.post:eliminar_articulo' articulo.pk%}" class="btn btn-primary">Eliminar</a>
+<div class="card-container">
+    <div class="card" style="width: auto;">
+        <br>
+            {% if articulo.imagen %}
+            <img src="{% static 'post_default.png' %}" class="card-img-top" alt="...">
+            {% else %}
+            <img src="{% static 'post_default.png' %}" class="card-img-top" alt="...">
             {% endif %}
-        </div>
-          
-            <a href="{% url 'apps.post:actualizar_articulo' articulo.pk%}" class="btn btn-primary">Editar</a>  
-            <form method="post" action="{% url 'apps.post:actualizar_articulo' articulo.pk%}">
-                {% csrf_token %}
-                <button type="submit" class="dropdown-item">Editar</button>
-            </form>
-            <form method="post" action="{% url 'apps.post:eliminar_articulo' articulo.pk%}">
-                {% csrf_token %}
-                <button type="submit" class="dropdown-item">Eliminar</button>
-            </form>
-        
-    <br>
+            <div class="card-body">
+                <h5 class="card-title">{{articulo.titulo}}</h5>
+                <p class="card-text">{{articulo.subtitulo}}</p>
+                <p class="card-text">{{articulo.texto}}</p>
+                <p class="card-text">{{articulo.fecha}}</p>
+                <p class="card-text">{{articulo.categoria}}</p>
+                {% if user.perfil.colaborador %}
+                <a href="{% url 'apps.post:actualizar_articulo' articulo.pk%}" class="btn btn-primary">Editar</a>
+                <a href="{% url 'apps.post:eliminar_articulo' articulo.pk%}" class="btn btn-primary">Eliminar</a>
+                {% endif %}
+            </div>
+        <br>
+    </div>
 </div>
+
 <div class="container-fluid">
     <h3>Comentarios ({{ comentarios.count }})</h3>
     <div class="container-fluid">
@@ -42,7 +34,7 @@
     </div>
 </div>
 <div class="container-fluid">
-    {% if user.perfil.miembro %}
+    {% if user.perfil.miembro or user.perfil.colaborador %}
         <h4>Añadir tu comentario:</h4>
     {% include 'articulos/agregar_comentario.html' %}
     {% endif %}

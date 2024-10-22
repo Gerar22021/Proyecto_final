@@ -2,46 +2,44 @@
 {% load static %}
 
 {% block contenido %}
-    <h1>Modificar Articulo</h1>
     <form action="" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-        <p>Ingrese los datos y presione el boton de guardar</p>
-        <table>
-            <form action="">
-                <tr>
-                    <td>
-                        Titulo: {{form.titulo}} {{articulo.titulo}}
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Subtitulo: {{form.subtitulo}} {{articulo.subtitulo}}
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Texto: {{form.texto}} {{articulo.texto}}
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Imagen: {{form.imagen}}
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Categoria: {{form.categoria}} {{articulo.categoria}}
-                    </td>
-                </tr>
-            </form>
-        </table>
-        <table>
-            <li>{{articulo.titulo}}</li>
-            <li>{{articulo.subtitulo}}</li>
-            <li>{{articulo.fecha}}</li>
-            <li>{{articulo.categoria}}</li>
-        </table>
-    
-        <input type="submit" class="btn btn-primary" value="Guardar">
+        <div class="card-container">
+            <div class="card" style="width: auto;">
+                <div class="card-body">
+                    <h1>Modificar Articulo</h1>
+                    <table>
+                        <form action="">
+                            <tr>
+                                <td>
+                                    Titulo: {{form.titulo}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Subtitulo: {{form.subtitulo}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Texto: {{form.texto}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Imagen: {{form.imagen}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Categoria: {{form.categoria}}
+                                </td>
+                            </tr>
+                        </form>
+                    </table>
+                    <input type="submit" class="btn btn-primary" value="Guardar">
+                </div>
+            </div>
+        </div>
     </form>
 {% endblock %}

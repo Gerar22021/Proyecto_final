@@ -1,10 +1,12 @@
-{% extends 'base.html' %}
+{% extends 'base.html'%}
 {% load static %}
 
 {% block contenido %}
 <h1>Categorias</h1>
+{% for p in categorias %}
+{% endfor %}
+Filtrar por categoria:
 <div class="dropdown">
-    Filtrar por categoria:
     <button>categoria</button>
     <div class="dropdown-content">
         {% for p in categorias %}

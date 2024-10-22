@@ -3,18 +3,23 @@
 {% for p in comentarios %}
 
     <br>
-        <li>{{p.texto}}</li>
-        {% if user.perfil.miembro and p.usuario.id == user.id %}
-            <form method="post" action="{% url 'apps.comentarios:editar_comentario' p.pk%}">
-                {% csrf_token %}
-                <button type="submit" class="dropdown-item">Editar</button>
-            </form>
-            <form method="post" action="{% url 'apps.comentarios:eliminar_comentario' p.pk%}">
-                {% csrf_token %}
-                <button type="submit" class="dropdown-item">Eliminar</button>
-            </form>
-            
-        {% endif %}
+    <div class="card-container-comentario">
+        <div class="card" style="width: 20rem;">
+            <div class="card-body">
+                <p>
+                    {{p.usuario}}:
+                </p>
+                <p>
+                    {{p.texto}}
+                </p>
+                {% if user.perfil.miembro or user.perfil.colaborador and p.usuario.id == user.id %}
+                <a href="{% url 'apps.comentarios:editar_comentario' p.pk%}" class="btn btn-primary">Editar</a>
+                <a href="{% url 'apps.comentarios:eliminar_comentario' p.pk%}" class="btn btn-primary">Eliminar</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+        
     <br>
     {%empty%}
     <h1>No hay comentarios</h1>
