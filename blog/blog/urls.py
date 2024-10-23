@@ -21,7 +21,7 @@ from apps.blog_auth.views import RegistrarseView
 
 
 urlpatterns = [
-    path('index/', index, name='index'),
+    path('', index, name='index'),
     path('acerca_de/', acerca_de, name='acerca_de'),
     path('admin/', admin.site.urls),
     path('users/', include('apps.blog_auth.urls')),
