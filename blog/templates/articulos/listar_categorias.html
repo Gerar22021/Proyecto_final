@@ -2,10 +2,7 @@
 {% load static %}
 
 {% block contenido %}
-<h1>Categorias</h1>
 {% for p in categorias %}
-    <a href="{% url 'apps.post:listar_por_categoria' p.nombre%}">{{p.nombre}}</a>
-{%empty%}
-No hay categorias
+    <p>{{p.nombre}}</p>
 {% endfor %}
 {% endblock %}
