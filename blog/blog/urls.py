@@ -16,15 +16,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
-from .views import index
+from .views import index, acerca_de, listar_categorias
 from apps.blog_auth.views import RegistrarseView
 
 
 urlpatterns = [
     path('index/', index, name='index'),
+    path('acerca_de/', acerca_de, name='acerca_de'),
     path('admin/', admin.site.urls),
     path('users/', include('apps.blog_auth.urls')),
     path('articulos/', include('apps.post.urls')),
     path('comentarios/', include('apps.comentarios.urls')),
-    path('', include('apps.contacto.urls'))
+    path('', include('apps.contacto.urls')),
+    path('listar_categorias/', listar_categorias, name='listar_categorias')
 ]

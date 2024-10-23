@@ -17,7 +17,7 @@
             {% block navegacion %}
             <nav class="navbar navbar-expand-lg bg-body-tertiary">
                 <div class="container-fluid">
-                  <a class="navbar-brand" href="#">Mi Blog</a>
+                  <a class="navbar-brand" href="/index">Mi Blog</a>
                   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                   </button>
@@ -27,41 +27,52 @@
                         <a class="nav-link active" aria-current="page" href="/index">Inicio</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" href="#">Categorias</a>
+                        <a class="nav-link" href="/listar_categorias">Categorias</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" href="#">Acerca de</a>
+                        <a class="nav-link" href="/acerca_de">Acerca de</a>
                       </li>
-                      <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        {% if not user.is_authenticated %}
-                        Ingresar
-                        {% else %}
-                        {{ user.username }}
-                        {% endif %}
-                        </a>
-                        <ul class="dropdown-menu">
-                            {% if not user.is_authenticated %}
-                            <li><a class="dropdown-item" href="{% url 'apps.blog_auth:sesion' %}">Iniciar sesion</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="{% url 'apps.blog_auth:registro' %}">Registrarse</a></li>
-                            {% endif %}
-                            {% if user.is_authenticated %}
-                            <form method="post" action="{% url 'apps.blog_auth:cerrar_sesion' %}">
-                                {% csrf_token %}
-                                <button type="submit" class="dropdown-item">Cerrar sesión</button>
-                            </form>
-                            {% endif %}
-                        </ul>
-                      </li>
+                      
                       <li class="nav-item">
                         <a class="nav-link disabled" aria-disabled="true"></a>
                       </li>
                     </ul>
-                    <form class="d-flex" role="search">
-                      <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
-                      <button class="btn btn-outline-success" type="submit">Buscar</button>
-                    </form>
+                    {% if not user.is_authenticated %}
+                    <li class="nav-item dropdown">
+                      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                          <a class="nav-link active" aria-current="page" href="{% url 'apps.blog_auth:sesion' %}">Iniciar sesion</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link active" aria-current="page" href="{% url 'apps.blog_auth:registro' %}">Registrarse</a>
+                        </li>
+                      </ul>
+                    </li>
+                    {% endif %}
+                    {% if user.is_authenticated %}
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      {{ user.username }}
+                      <ul class="dropdown-menu">
+                          {% if user.is_authenticated %}
+                          <form method="post" action="{% url 'apps.blog_auth:cerrar_sesion' %}">
+                              {% csrf_token %}
+                              <button type="submit" class="dropdown-item">Cerrar sesión</button>
+                          </form>
+                          {% endif %}
+                      </ul>
+                      
+                      </a>
+                      <ul class="dropdown-menu">
+                          {% if user.is_authenticated %}
+                          <form method="post" action="{% url 'apps.blog_auth:cerrar_sesion' %}">
+                              {% csrf_token %}
+                              <button type="submit" class="dropdown-item">Cerrar sesión</button>
+                          </form>
+                          {% endif %}
+                      </ul>
+                    </li>
+                    {% endif %}
                   </div>
                 </div>
               </nav>
