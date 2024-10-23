@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load static %}<!--  -->
+{% load static %}
 
 
 
@@ -17,7 +17,7 @@ Filtrar por categoria:
 <div class="card-container">
     {% for p in articulos %}
     <div class="card" style="width: 18rem;">
-            <img src="{% static 'post_default.png' %}" class="card-img-top" alt="...">
+            <img src="{{p.imagen.url}}" class="card-img-top" width="200px" alt="...">
             <div class="card-body">
                 <h5 class="card-title">{{p.titulo}}</h5>
                 <p class="card-text">{{p.texto|truncatechars:100}}</p>
@@ -26,8 +26,8 @@ Filtrar por categoria:
                 <a href="{% url 'apps.post:articulo_individual' p.pk%}" class="btn btn-primary">Ver mas</a>
             </div>  
     </div>
-    {%empty%}
-         <h1>No hay registros</h1>
+    {% empty %}
+        <h1>No hay registros</h1>
     {% endfor %}
 </div>
 
