@@ -17,7 +17,7 @@
             {% block navegacion %}
             <nav class="navbar navbar-expand-lg bg-body-tertiary">
                 <div class="container-fluid">
-                  <a class="navbar-brand" href="#">Mi Blog</a>
+                  <a class="navbar-brand" href="{% url 'index' %}">Mi Blog</a>
                   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                   </button>
@@ -27,25 +27,42 @@
                         <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Inicio</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" href="{% url 'apps.post:listar_articulos' %}">Posts</a>
-                      </li>
+                        <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Post
+                          </a>
+                          <ul class="dropdown-menu">
+                              {% if user.is_authenticated and user.perfil.colaborador %}
+                                <a class="nav-link" href="{% url 'apps.post:agregar_articulo' %}">Agregar</a>
+                                <a class="nav-link" href="{% url 'apps.post:listar_articulos' %}">Listar</a>
+                              {% else %}
+                                <a class="nav-link" href="{% url 'apps.post:listar_articulos' %}">Listar</a>
+                              {% endif %}
+                          </ul>
+                        </li>
+                    </li>
                       <li class="nav-item">
-                        <a class="nav-link" href="#">Acerca de</a>
+                        <a class="nav-link" href="/acerca_de">Acerca de</a>
                       </li>
+                    </ul>
+                    {% if not user.is_authenticated %}
+                      <li class="nav-item dropdown">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                          <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{% url 'apps.blog_auth:sesion' %}">Iniciar sesion</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{% url 'apps.blog_auth:registro' %}">Registrarse</a>
+                          </li>
+                        </ul>
+                      </li>
+                    {% endif %}
+                    {% if user.is_authenticated %}
                       <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        {% if not user.is_authenticated %}
-                        Ingresar
-                        {% else %}
-                        {{ user.username }}
-                        {% endif %}
+                          {{ user.username }}
                         </a>
                         <ul class="dropdown-menu">
-                            {% if not user.is_authenticated %}
-                            <li><a class="dropdown-item" href="{% url 'apps.blog_auth:sesion' %}">Iniciar sesion</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="{% url 'apps.blog_auth:registro' %}">Registrarse</a></li>
-                            {% endif %}
                             {% if user.is_authenticated %}
                             <form method="post" action="{% url 'apps.blog_auth:cerrar_sesion' %}">
                                 {% csrf_token %}
@@ -53,56 +70,23 @@
                             </form>
                             {% endif %}
                         </ul>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link disabled" aria-disabled="true"></a>
-                      </li>
-                    </ul>
-                    <form class="d-flex" role="search">
-                      <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
-                      <button class="btn btn-outline-success" type="submit">Buscar</button>
-                    </form>
-                  </div>
-                </div>
-              </nav>
-                {% if user.is_authenticated %}
-                <div class="dropdown">
-                        <div class="dropdown-content">
-                        <form method="post" action="{% url 'apps.blog_auth:cerrar_sesion' %}">
-                            {% csrf_token %}
-                            <button type="submit" class="dropdown-item">Cerrar sesión</button>
-                        </form>
-                        </div>
+                        </li>
+                        {% endif %}
+                      </div>
                     </div>
-                    {% if user.perfil.colaborador %}
-                        <div class="dropdown">
-                            <button>-----Articulo-----</button>
-                            <div class="dropdown-content">
-                            <a href="{% url 'apps.post:agregar_articulo' %}">Agregar</a>
-                            <a href="{% url 'apps.post:listar_articulos' %}">Listar</a>
-                            </div>
-                        </div>
-                    {% endif %}
-                {% else %}
-                <div class="dropdown">
-                    <button>-----Articulo-----</button>
-                    <div class="dropdown-content">
-                        <a href="{% url 'apps.post:listar_articulos' %}">Listar</a>
-                    </div>
-                </div>
-                {% endif %}
-                
-            {% endblock %}
+                  </nav>
+                {% endblock %}
         </center>
     </div>
-            
-    <div class="container mt-5">
+    
+    <div class="container">
         {% block contenido %}
         {% endblock %}
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 <footer>
-
+  {% block footer %}
+  {% endblock %}
 </footer>
 </html>

@@ -12,16 +12,17 @@
                 <p>
                     {{p.texto}}
                 </p>
-                {% if user.perfil.miembro or user.perfil.colaborador and p.usuario.id == user.id %}
-                <a href="{% url 'apps.comentarios:editar_comentario' p.pk%}" class="btn btn-primary">Editar</a>
-                <a href="{% url 'apps.comentarios:eliminar_comentario' p.pk%}" class="btn btn-primary">Eliminar</a>
+                {% if user.perfil.colaborador or user.perfil.miembro %}
+                    {% if p.usuario.id == user.id %}
+                        <a href="{% url 'apps.comentarios:editar_comentario' p.pk%}" class="btn btn-primary">Editar</a>
+                        <a href="{% url 'apps.comentarios:eliminar_comentario' p.pk%}" class="btn btn-primary">Eliminar</a>
+                    {% endif %}
                 {% endif %}
             </div>
         </div>
     </div>
-        
     <br>
     {%empty%}
-    <h1>No hay comentarios</h1>
+    <h5>No hay comentarios</h5>
     {% endfor %}
 {% endblock %}

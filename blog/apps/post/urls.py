@@ -13,7 +13,7 @@ urlpatterns = [
     path('eliminar_articulo/<int:pk>', EliminarArticulo.as_view(), name = 'eliminar_articulo'),
     path('listar_articulos/', ListarArticulos.as_view(), name = 'listar_articulos'),
     path('listar_por_categoria/<str:categoria>', listar_articulo_por_categoria, name='listar_por_categoria'),
-    path('listar_categorias/', ListarCategorias.as_view(), name= 'listar_categorias'),
+    path('listar_categorias/', ListarCategorias.as_view(), name='listar_categorias'),
     path('ordenar_por/', ordenar_por, name = 'ordenar_por'),
     path('articulo_individual/<int:id>', articulo_individual, name='articulo_individual')
 

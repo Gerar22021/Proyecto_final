@@ -9,11 +9,16 @@
 
 <form action="" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
-    <h1>Agregar articulo</h1>
-    <p>Ingrese los datos y presione el boton de guardar</p>
-    {{ form.as_p }}
-   
-    <input type="submit" class="btn btn-primary" value="Guardar">
+    <div class="card-container">
+        <div class="card" style="width: auto;">
+            <div class="card-body">
+                <h1>Agregar articulo</h1>
+                <p>Ingrese los datos y presione el boton de guardar</p>
+                {{ form.as_p }}
+                <input type="submit" class="btn btn-primary" value="Guardar">
+            </div>
+        </div>
+    </div>
 </form>
 
 {% endblock %}

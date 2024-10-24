@@ -1,2 +1,10 @@
 {% extends 'base.html'%}
 {% load static %}
+
+{% block contenido %}
+<h1>Acerca de nosotros</h1>
+{% endblock %}
+
+{% block footer %}
+    {% include 'users/contacto.html' %}
+{% endblock %}

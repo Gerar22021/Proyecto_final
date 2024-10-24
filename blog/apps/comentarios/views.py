@@ -51,7 +51,8 @@ class EditarComentario(LoginRequiredMixin, UpdateView):
         queryset = super().get_queryset()
         return queryset.filter(usuario = self.request.user)
 
-class EliminarComentario(LoginRequiredMixin, DeleteView):
+class EliminarComentario(DeleteView):
     model = Comentario
-    # template_name = 'genericos/confirma_eliminar.html'
-    success_url = reverse_lazy('apps.post:listar_articulos')
+    template_name = 'comentarios/eliminar_comentario.html'
+    def get_success_url(self):
+        return reverse_lazy('apps.post:listar_articulos')
