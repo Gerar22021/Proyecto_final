@@ -7,6 +7,7 @@ from .views import AgregarArticulo, ActualizarArticulo, EliminarArticulo, Listar
 app_name = 'apps.post'
 
 urlpatterns = [
+    
     path('agregar_articulo/', AgregarArticulo.as_view(), name = 'agregar_articulo'),
     path('actualizar_articulo/<int:pk>', ActualizarArticulo.as_view(), name = 'actualizar_articulo'),
     path('eliminar_articulo/<int:pk>', EliminarArticulo.as_view(), name = 'eliminar_articulo'),

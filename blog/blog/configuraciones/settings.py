@@ -15,9 +15,10 @@ LOGOUT_REDIRECT_URL = reverse_lazy('index')
 
 
 # SECURITY WARNING: keep the secret key used in production secret!
-ENV_SECRET_KEY = os.getenv("SECRET_KEY")
+# ENV_SECRET_KEY = os.getenv("SECRET_KEY")
 
-SECRET_KEY = os.getenv("SECRET_KEY")
+# SECRET_KEY = os.getenv("SECRET_KEY")
+SECRET_KEY = 'django-insecure-c^o%)2$k5nfb7k#-olkm(050fbr#ap8bm2g08*fs0x+2c**-_x'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -75,21 +76,16 @@ WSGI_APPLICATION = 'blog.wsgi.application'
 
 
 
-NAME_DB = os.getenv("NAME_DB")
-USER_DB = os.getenv("USER_MYSQL")
-PASSWORD_DB =  os.getenv("PASSWORD_MYSQL")
+# NAME_DB = os.getenv("NAME_DB")
+# USER_DB = os.getenv("USER_MYSQL")
+# PASSWORD_DB =  os.getenv("PASSWORD_MYSQL")
 
 DATABASES = {
     'default': {
-        "ENGINE": 'django.db.backends.mysql',
-        "NAME": NAME_DB,
-        "USER": USER_DB,
-        "PASSWORD": PASSWORD_DB,
-        "HOST": "127.0.0.1",
-        "PORT": "3306",
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 
 # Password validation
 
@@ -123,11 +119,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 
 STATIC_URL = 'static/'
-STATICFILES_DIRS= os.path.join(os.path.dirname(BASE_DIR), 'static'),   #(os.path.join(os.path.dirname(BASE_DIR), 'static'),)
+STATICFILES_DIRS= (os.path.join(os.path.dirname(BASE_DIR), 'static')),   #(os.path.join(os.path.dirname(BASE_DIR), 'static'),)
 
 # Default primary key field type
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-MEDIA_URL = 'media/'
+MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'media') #os.path.join(os.path.dirname(BASE_DIR), 'media')
