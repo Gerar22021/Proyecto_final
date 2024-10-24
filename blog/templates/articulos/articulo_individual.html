@@ -33,10 +33,14 @@
         
     </div>
 </div>
-<div class="container-fluid">
-    {% if user.perfil.miembro or user.perfil.colaborador %}
-        <h4>Añadir tu comentario:</h4>
-    {% include 'articulos/agregar_comentario.html' %}
-    {% endif %}
+<div class="card-container-comentario">
+    <div class="card" style="width: auto;">
+        <div class="card-body">
+            {% if user.perfil.miembro or user.perfil.colaborador %}
+                <h6>Añadir tu comentario:</h6>
+                {% include 'articulos/agregar_comentario.html' %}
+            {% endif %}
+        </div>
+    </div>
 </div>
 {% endblock %}

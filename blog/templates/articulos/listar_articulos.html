@@ -1,8 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}<!--  -->
 
-
-
 {% block contenido %}
 Filtrar por categoria: 
 <div class="btn-group" role="group" aria-label="Basic example">
@@ -10,8 +8,6 @@ Filtrar por categoria:
         <a href="{% url 'apps.post:listar_por_categoria' p.categoria.nombre%}" class="btn btn-primary">{{p.categoria.nombre}}</a>
     {% endfor %}
 </div>
-
-    
     <a href="{% url 'apps.post:listar_articulos'%}" class="btn-primary">Eliminar filtro</a>
 
 <form method="GET" action="{% url 'apps.post:ordenar_por' %}">
