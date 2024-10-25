@@ -33,14 +33,14 @@
         
     </div>
 </div>
+{% if user.perfil.miembro or user.perfil.colaborador %}
 <div class="card-container-comentario">
     <div class="card" style="width: auto;">
         <div class="card-body">
-            {% if user.perfil.miembro or user.perfil.colaborador %}
                 <h6>Añadir tu comentario:</h6>
                 {% include 'articulos/agregar_comentario.html' %}
-            {% endif %}
         </div>
     </div>
 </div>
+{% endif %}
 {% endblock %}
