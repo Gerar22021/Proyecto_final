@@ -7,6 +7,13 @@
 
 {% block contenido %}
 
+<style>
+  body {
+    background-color: #0d173d; /* Color de fondo oscuro */
+    color: #ffffff; /* Texto claro para contraste */
+}
+</style>
+
 <div id="carouselExampleCaptions" class="carousel slide">
   <div class="carousel-indicators">
     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -17,22 +24,24 @@
     <div class="carousel-item active">
       <img src="{% static 'portada_1.png' %}" class="d-block w-100" alt="...">
       <div class="carousel-caption d-none d-md-block">
-        <h3>Herramientas de desarrollo</h3>
-        <p>Some representative placeholder content for the first slide.</p>
+        <h1>Herramientas de desarrollo</h1>
+        <h4>Las herramientas para desarrolladores actúan como una interfaz entre la realidad física y los procesos informáticos. Incluyen lenguajes de programación, marcos y plataformas que abstraen diferentes niveles de complejidad.</h4>
       </div>
     </div>
     <div class="carousel-item">
       <img src="{% static 'portada_2.png' %}" class="d-block w-100" alt="...">
       <div class="carousel-caption d-none d-md-block">
-        <h5>Second slide label</h5>
-        <p>Some representative placeholder content for the second slide.</p>
+        <h1>Recursos digitales</h1>
+        <h4>Los recursos digitales son elementos que se pueden almacenar y visualizar en un dispositivo electrónico, y que se pueden consultar de manera directa o a través de la red. Pueden ser materiales creados digitalmente o convertidos de analógicos a formato digital.</h4>
       </div>
     </div>
     <div class="carousel-item">
       <img src="{% static 'portada_3.png' %}" class="d-block w-100" alt="...">
       <div class="carousel-caption d-none d-md-block">
-        <h5>Third slide label</h5>
-        <p>Some representative placeholder content for the third slide.</p>
+        <div>
+          <h1>Comunidad</h1>
+          <h4>Las comunidades ayudan a los desarrolladores a conectarse con otros que comparten la misma experiencia, fracasos y éxitos dentro de la industria. Consisten en canales abiertos mediante los cuales, personas interesadas en el lenguaje de la programación o profesionales del sector, se reúnen para aportar, preguntar, debatir y resolver temas relacionados.</h4>
+        </div>
       </div>
     </div>
   </div>
