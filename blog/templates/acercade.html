@@ -2,9 +2,20 @@
 {% load static %}
 
 {% block contenido %}
-<h1>Acerca de nosotros</h1>
-{% endblock %}
-
-{% block footer %}
-    {% include 'users/contacto.html' %}
+    <center>
+        {% if user.is_authenticated %}
+            <form method="POST" style="margin: 200;">
+                <h1>Formulario de contacto</h1>
+                        <br>
+                            {% for message in messages %}
+                                <div class="message {{ message.tags }}"> {{message}} </div>
+                            {% endfor %}
+                        <table>
+                            {% csrf_token %}
+                            {{ form }}
+                        </table>
+                        <input type="submit" value="Contactar">
+            </form>
+            {% endif %} 
+    </center>
 {% endblock %}
