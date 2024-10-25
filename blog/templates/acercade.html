@@ -2,9 +2,18 @@
 {% load static %}
 
 {% block contenido %}
-<h1>Acerca de nosotros</h1>
-{% endblock %}
+<div class="container justify-content-center bg-info-subtle">
+    <div class="container">
+        <h1>Acerca de nosotros</h1>
+    </div>
 
-{% block footer %}
-    {% include 'users/contacto.html' %}
+    <div class="container-fluid bg-body-tertiary">
+        <p>
+            Somos el Grupo 7 de la Comisión 7 del Informatorio, conformado por Gerardo Gómez y Ezequiel Scheinberg. Como estudiantes apasionados por la programación, estamos en constante aprendizaje y desarrollo de habilidades tecnológicas. Si bien actualmente no trabajamos en el sector IT, tenemos la firme convicción de ingresar a este mundo y construir una carrera profesional en programación, con un enfoque especial en Python, un lenguaje que consideramos versátil, fácil de aprender y extremadamente útil.
+        </p>
+        <p>
+            Nuestra visión es convertirnos en profesionales destacados en el campo de la tecnología, contribuyendo con soluciones innovadoras y eficientes que marquen la diferencia en la industria. La misión que nos impulsa es dominar el arte de la programación, aprender de manera continua y aplicar nuestros conocimientos para resolver problemas reales, siempre con el compromiso de mejorar y crecer dentro del entorno IT.
+        </p>
+    </div>
+</div>
 {% endblock %}

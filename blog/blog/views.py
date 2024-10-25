@@ -6,11 +6,11 @@ def index(request):
 def acerca_de(request):
     return render(request, 'acercade.html')
 
-def listar_categorias(request):
-    return render(request, 'listar_categorias.html')
+# def listar_categorias(request):
+#     return render(request, 'listar_categorias.html')
 
-def listar_articulos(request):
-    return render(request, 'listar_articulos.html')
+# def listar_articulos(request):
+#     return render(request, 'listar_articulos.html')
 
-def agregar_comentario(request):
-    return render(request, 'agregar_comentario.html')
+# def agregar_comentario(request):
+#     return render(request, 'agregar_comentario.html')

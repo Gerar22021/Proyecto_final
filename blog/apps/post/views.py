@@ -15,7 +15,7 @@ class ListarCategorias(ListView):
 
     def get_context_data(self):
         context = super().get_context_data()
-        categorias = Categoria.objects.all().distinct('nombre')
+        categorias = Categoria.objects.all()
         context['categorias'] = categorias
         return context
 

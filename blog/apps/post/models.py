@@ -6,7 +6,7 @@ from django.utils import timezone
 class Categoria(models.Model):
     nombre = models.CharField(max_length=30, null=False)
 
-    def __str__(self) -> str:
+    def __str__(self):
         return self.nombre
 
 class Articulo(models.Model):
@@ -22,7 +22,7 @@ class Articulo(models.Model):
     class Meta:
         ordering = ('-publicado',)
 
-    def __str__(self) -> str:
+    def __str__(self):
         return self.titulo
     
     def delete(self, using = None, keep_parents = False):
