@@ -2,20 +2,20 @@
 {% load static %}
 
 {% block contenido %}
-    <center>
-        {% if user.is_authenticated %}
-            <form method="POST" style="margin: 200;">
-                <h1>Formulario de contacto</h1>
-                        <br>
-                            {% for message in messages %}
-                                <div class="message {{ message.tags }}"> {{message}} </div>
-                            {% endfor %}
-                        <table>
-                            {% csrf_token %}
-                            {{ form }}
-                        </table>
-                        <input type="submit" value="Contactar">
-            </form>
-            {% endif %} 
-    </center>
+<div class="card-container">
+    <div class="card-container">
+        <div class="foto1" style="scale: 50%;">
+            <img class="img-fluid rounded-circle" src="{% static 'default.webp' %}" style="margin-top: 6%;" alt="">
+        </div>
+        <div class="foto2" style="scale: 50%;">
+            <img class="img-fluid rounded-circle" src="{% static 'default.webp' %}" style="margin-top: 6%;" alt=""> 
+        </div>
+        <div class="card-container">
+            <div class="card-container" style="max-width: 80% ;">
+                <p class="mbr-text mbr-fonts-style display-7 text-light" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: 150%;"">Somos el Grupo 7 de la Comisión 7 del Informatorio, conformado por Gerardo Gómez y Ezequiel Scheinberg. Como estudiantes apasionados por la programación, estamos en constante aprendizaje y desarrollo de habilidades tecnológicas. Si bien actualmente no trabajamos en el sector IT, tenemos la firme convicción de ingresar a este mundo y construir una carrera profesional en programación, con un enfoque especial en Python, un lenguaje que consideramos versátil, fácil de aprender y extremadamente útil.</p>
+            </div> 
+        <div/>
+        
+    </div>
+</div>
 {% endblock %}

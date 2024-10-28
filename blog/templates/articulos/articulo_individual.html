@@ -11,9 +11,9 @@
             <img src="{% static 'post_default.png' %}" class="card-img-top" alt="...">
             {% endif %}
             <div class="card-body">
-                <h5 class="card-title">{{articulo.titulo}}</h5>
-                <p class="card-text">{{articulo.subtitulo}}</p>
-                <p class="card-text">{{articulo.texto}}</p>
+                <h5 class="card-title" style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: x-large;">{{articulo.titulo}}</h5>
+                <p class="card-text" style="font-family:Georgia, 'Times New Roman', Times, serif">{{articulo.subtitulo}}</p>
+                <p class="card-text" style="font-family:Georgia, 'Times New Roman', Times, serif">{{articulo.texto}}</p>
                 <p class="card-text">{{articulo.fecha}}</p>
                 <p class="card-text">{{articulo.categoria}}</p>
                 {% if user.perfil.colaborador %}
@@ -26,7 +26,7 @@
 </div>
 
 <div class="container-fluid">
-    <h3>Comentarios ({{ comentarios.count }})</h3>
+    <h3 style="color: aliceblue;">Comentarios ({{ comentarios.count }})</h3>
     <div class="container-fluid">
         
             {% include 'articulos/listar_comentarios.html' %}

@@ -19,4 +19,7 @@ class RegistrarseView(FormView):
 class LoguearseView(LoginView):
     template_name = 'users/sesion.html'
 
+def mi_perfil(request):
+    return render(request, 'users/mi_perfil.html')
+
 # Create your views here.

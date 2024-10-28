@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block contenido %}
-<div class="container"></div>
+<div class="container">
     <p style="color: aliceblue;">Filtrar por categoria:</p>
     <div class="btn-group" role="group" aria-label="Basic example">
         {% for p in articulos %}
@@ -20,8 +20,8 @@
     <div class="card" style="width: 18rem;">
             <img src="{{p.imagen.url}}" class="card-img-top" width="200px" alt="...">
             <div class="card-body">
-                <h5 class="card-title">{{p.titulo}}</h5>
-                <p class="card-text">{{p.texto|truncatechars:100}}</p>
+                <h5 class="card-title" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">{{p.titulo}}</h5>
+                <p class="card-text" style="font-family:Georgia, 'Times New Roman', Times, serif;">{{p.texto|truncatechars:100}}</p>
                 <p class="card-text">{{p.fecha}}</p>
                 <p class="card-text">{{p.categoria}}</p>
                 <a href="{% url 'apps.post:articulo_individual' p.pk%}" class="btn btn-primary">Ver mas</a>
