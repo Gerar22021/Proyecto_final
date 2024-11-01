@@ -1,6 +1,7 @@
 from django.shortcuts import render
 
 def index(request):
+    categorias = listar_categorias
     return render(request, 'index.html')
 
 def acerca_de(request):

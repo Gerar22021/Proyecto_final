@@ -46,14 +46,12 @@
     <span class="visually-hidden">Next</span>
   </button>
 </div>
-<div>
-  {% for cat in categorias %}
-    <p>{{cat.nombre}}</p>
-  {% endfor %}
-</div>
+
 <section>
   <center>
-    
+    <div class="container">
+      {% include 'articulos/listar_categorias.html' %}
+    </div>
   </center>
 </section>
 {% endblock %}
